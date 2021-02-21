@@ -15,10 +15,10 @@ class StartApp extends HookWidget {
     TextEditingController()
   ];
 
-  final provider = useProvider(gameProvider);
-
   @override
   Widget build(BuildContext context) {
+    final provider = useProvider(gameProvider);
+
     return Scaffold(
       appBar: AppBar(title: Text('ワンナイト人狼')),
       body: Center(
@@ -28,7 +28,7 @@ class StartApp extends HookWidget {
               children: createPlayerWidgets(),
             ),
             MaterialButton(
-              onPressed: () => {start(context)},
+              onPressed: () => {start(context,provider)},
               child: Text('スタート！'),
               color: Colors.blueAccent,
               textColor: Colors.white,
@@ -39,7 +39,7 @@ class StartApp extends HookWidget {
     );
   }
 
-  void start(BuildContext context) {
+  void start(BuildContext context,provider) {
     provider.controllers = controllers;
     provider.shufflePositoins();
     Navigator.push(
@@ -51,7 +51,7 @@ class StartApp extends HookWidget {
   }
 
   List<Widget> createPlayerWidgets() {
-    List<Widget> players = List<Widget>();
+    List<Widget> players = [];
     for (int i = 0; i < 4; i++) {
       players.add(
         Padding(
