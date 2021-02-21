@@ -6,8 +6,7 @@ final counterProvider = StateNotifierProvider((_) => Game());
 
 class Game extends StateNotifier<int> {
   Game() : super(0);
-  List<TextEditingController> _controllers;
-  List<TextEditingController> get controllers => _controllers;
+  List<TextEditingController> controllers;
 
   List<String> _positions = [
     "村人",
@@ -18,17 +17,6 @@ class Game extends StateNotifier<int> {
     "てるてる",
   ];
   List<String> get positions => _positions;
-
-  int _divinationNum;
-  int get divinationNum => _divinationNum;
-
-  set controllers(List<TextEditingController> playerControllers) {
-    _controllers = playerControllers;
-  }
-
-  void setDivinationNum(int num) {
-    _divinationNum = num;
-  }
 
   void shufflePositoins() {
     _positions.shuffle();
