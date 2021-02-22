@@ -12,7 +12,6 @@ void main() {
   );
 }
 
-// Note: CounterApp is a HookWidget, from flutter_hooks.
 class MyApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
