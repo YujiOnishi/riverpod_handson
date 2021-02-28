@@ -5,7 +5,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../provider/container.dart';
 import '../pages/game.dart';
 
-// Note: CounterApp is a HookWidget, from flutter_hooks.
 class StartApp extends HookWidget {
   final List<TextEditingController> controllers = [
     TextEditingController(),
