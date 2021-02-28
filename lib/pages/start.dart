@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../provider/container.dart';
+import '../provider/game.dart';
 import '../pages/game.dart';
 
 class StartApp extends HookWidget {
@@ -17,7 +17,6 @@ class StartApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final provider = useProvider(gameProvider);
-
     return Scaffold(
       appBar: AppBar(title: Text('ワンナイト人狼')),
       body: Center(
@@ -27,7 +26,7 @@ class StartApp extends HookWidget {
               children: createPlayerWidgets(),
             ),
             MaterialButton(
-              onPressed: () => {start(context,provider)},
+              onPressed: () => {start(context, provider)},
               child: Text('スタート！'),
               color: Colors.blueAccent,
               textColor: Colors.white,
@@ -38,7 +37,7 @@ class StartApp extends HookWidget {
     );
   }
 
-  void start(BuildContext context,provider) {
+  void start(BuildContext context, Game provider) {
     provider.controllers = controllers;
     provider.shufflePositoins();
     Navigator.push(

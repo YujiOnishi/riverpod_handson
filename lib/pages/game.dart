@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../provider/container.dart';
+import '../provider/game.dart';
 
 class GameApp extends HookWidget {
+
   @override
   Widget build(BuildContext context) {
     final provider = useProvider(gameProvider);
@@ -31,7 +32,7 @@ class GameApp extends HookWidget {
     );
   }
 
-  Widget createButton(provider) {
+  Widget createButton(Game provider) {
     Widget button;
     int count = provider.state;
 
@@ -49,15 +50,17 @@ class GameApp extends HookWidget {
     }
   }
 
-  String getMasterText(provider) {
-    String text;
+  String getMasterText(Game provider) {
+    print("test");
+    String text = "";
     int count = provider.state;
 
     if (count / 2 >= provider.controllers.length - 1) {
       text = "ゲームスタート！";
       return text;
     } else if (count % 2 == 0) {
-      text = "あなたは" + provider.controllers[count / 2].text + "ですか？";
+      int num = (count / 2).floor();
+      text = "あなたは" + provider.controllers[num].text + "ですか？";
       return text;
     } else {
       int num = (count / 2).floor();
